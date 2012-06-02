@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title Metronom
+    %link{ rel: "stylesheet", href: "statics/metronom.css" }
+    %script{ src: "vendor/zepto.js",      type: "text/javascript" }
+    %script{ src: "vendor/underscore.js", type: "text/javascript" }
+    %script{ src: "statics/metronom.js",   type: "text/javascript" }
+  %body
+    %h1 Metronom
+    %section
+      %label{ for: "bpm" } BPM
+      %input{ id: "bpm", value: "{{metronom.bpm}}" }
+      %label{ for: "tempo" } Tempo
+      %input{ id: "tempo", value: "{{metronom.tempo}}" }
+    %section
+      %button#playpause >
+    %audio#clap
+      %source{ src: "audio/clap.mp3", type: "audio/mp3" }
+    %audio#tin
+      %source{ src: "audio/tin.mp3", type: "audio/mp3" }

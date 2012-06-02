@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metronom</title>
+    <link href='statics/metronom.css' rel='stylesheet'>
+    <script src='vendor/zepto.js' type='text/javascript'></script>
+    <script src='vendor/underscore.js' type='text/javascript'></script>
+    <script src='statics/metronom.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <h1>Metronom</h1>
+    <section>
+      <label for='bpm'>BPM</label>
+      <input id='bpm' value='{{metronom.bpm}}'>
+      <label for='tempo'>Tempo</label>
+      <input id='tempo' value='{{metronom.tempo}}'>
+    </section>
+    <section>
+      <button id='playpause'>></button>
+    </section>
+    <audio id='clap'>
+      <source src='audio/clap.mp3' type='audio/mp3'></source>
+    </audio>
+    <audio id='tin'>
+      <source src='audio/tin.mp3' type='audio/mp3'></source>
+    </audio>
+  </body>
+</html>
