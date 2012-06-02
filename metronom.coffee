@@ -4,7 +4,7 @@ class Metronom
 	constructor: ->
 		@bpm = 140
 		@tempo = "4/4"
-		@delay = -> min / @bpm * 1.3
+		@delay = -> min / @bpm * 1.2
 		@tin = $("#tin").get(0)
 		@clap = $("#clap").get(0)
 		@status = "paused"
@@ -26,7 +26,7 @@ class Metronom
     $("#bpm").on "change", =>
       @bpm = $("#bpm").val()
       @reset()
-      clearTimeout(@timeout)
+      clearInterval(@timeout)
       @play_tin()
 	  
 	start: ->
@@ -48,11 +48,9 @@ class Metronom
 		
 	play_tin: ->
     @status = "playing"
-    @play()
-    @timeout = setTimeout =>
-      @reset()
-      return if @status == "paused"
-      @play_tin()
+    @timeout = setInterval =>
+      clearInterval(@timeout) if @status == "paused"
+      @play()
       console.log @delay()
     , @delay()
 		

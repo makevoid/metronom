@@ -7,7 +7,7 @@
       this.bpm = 140;
       this.tempo = "4/4";
       this.delay = function() {
-        return min / this.bpm * 1.3;
+        return min / this.bpm * 1.2;
       };
       this.tin = $("#tin").get(0);
       this.clap = $("#clap").get(0);
@@ -32,7 +32,7 @@
       return $("#bpm").on("change", __bind(function() {
         this.bpm = $("#bpm").val();
         this.reset();
-        clearTimeout(this.timeout);
+        clearInterval(this.timeout);
         return this.play_tin();
       }, this));
     };
@@ -56,13 +56,11 @@
     };
     Metronom.prototype.play_tin = function() {
       this.status = "playing";
-      this.play();
-      return this.timeout = setTimeout(__bind(function() {
-        this.reset();
+      return this.timeout = setInterval(__bind(function() {
         if (this.status === "paused") {
-          return;
+          clearInterval(this.timeout);
         }
-        this.play_tin();
+        this.play();
         return console.log(this.delay());
       }, this), this.delay());
     };
